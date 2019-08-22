@@ -26,7 +26,7 @@ pipeline {
         }
         changed {
             sh 'echo "This will run only if the state of the Pipeline has changed"'
-            sh 'echo '"For example, if the Pipeline was previously failing but is now successful"'
+            sh 'echo "For example, if the Pipeline was previously failing but is now successful"'
         }
 }
                     
