@@ -1,35 +1,28 @@
 pipeline {
     agent any
     stages {
-        stage('Deploy') {
-            steps {                
-                timeout(time: 3, unit: 'MINUTES') {
-                retry(3) {
-                    sh 'sh raj.sh'
-                }
-                }
+        stage('Test') {
+            steps {
+                sh 'echo "Fail!"; exit 1'
             }
         }
     }
-    port {
+    post {
         always {
-           echo "This will always run"
+            echo 'This will always run'
         }
         success {
-            echo "This will run only the build is success"
+            echo 'This will run only if successful'
         }
         failure {
-            echo "This will only run when build failiure"
+            echo 'This will run only if failed'
         }
         unstable {
-            echo "This will only run when build is unstable"
+            echo 'This will run only if the run was marked as unstable'
         }
         changed {
-            echo "This will run only if the state of the Pipeline has changed"
-            echo "For example, if the Pipeline was previously failing but is now successful"
+            echo 'This will run only if the state of the Pipeline has changed'
+            echo 'For example, if the Pipeline was previously failing but is now successful'
         }
+    }
 }
-                    
-        
-                
-            
