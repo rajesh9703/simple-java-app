@@ -1,16 +1,19 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.3.3'
-        }
-    }        
+    agent any
     stages {
-        stage ('Build') {
+        stage {
             steps {
-                sh 'mvn --version'
+                retry(3) {
+                    sh './raj.sh'
                 }
-           }
-      }
-  }
+                timeout(time: 3, unit: 'MINUTES') {
+                    sh './raj.sh'
+                }
+            }
+        }
+    }
+}
+                    
+        
                 
             
