@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Hello Rajesh"
+sudo echo "Hello Rajesh"
