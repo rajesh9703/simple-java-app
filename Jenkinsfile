@@ -1,11 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('Deploy') {
             steps {
-                sh 'echo "Fail!"; exit 1'
+                timeout(time: 3, unit: 'MINUTES') {
+                    retry(5) {
+                        sh 'chmod +x ./raj.sh'
+                        sh './raj.sh'
+                    }
+                }
             }
-        }
     }
     post {
         always {
