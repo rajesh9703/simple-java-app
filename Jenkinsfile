@@ -5,7 +5,7 @@ pipeline {
             steps {                
                 timeout(time: 3, unit: 'MINUTES') {
                 retry(3) {
-                    sh './raj.sh'
+                    sh 'sh raj.sh'
                 }
                 }
             }
