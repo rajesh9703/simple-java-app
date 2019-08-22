@@ -2,13 +2,11 @@ pipeline {
     agent any
     stages {
         stage('Deploy') {
-            steps {
+            steps {                
+                timeout(time: 3, unit: 'MINUTES') {
                 retry(3) {
                     sh './raj.sh'
                 }
-                
-                timeout(time: 3, unit: 'MINUTES') {
-                    sh './raj.sh'
                 }
             }
         }
